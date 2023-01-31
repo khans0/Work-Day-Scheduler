@@ -1,6 +1,8 @@
-$(document).ready(function () {
-  // Display the current day at the top of the calendar
-  $("#currentDay").text(moment().format("dddd, MMMM Do YYYY, h:mm:ss a"));
+$(document).ready(function() {
+  function updateTime() {
+    $("#currentDay").text(moment().format("dddd, MMMM Do YYYY, h:mm:ss a"));
+  }
+  setInterval(updateTime, 1000);
 
   // Create timeblocks for standard business hours (9am - 5pm)
   for (var i = 9; i <= 17; i++) {
