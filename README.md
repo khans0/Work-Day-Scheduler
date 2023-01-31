@@ -14,11 +14,11 @@
 ​
 ### �� What is it about?
 ​
-[comment]: <> By using jQuery, moment.JS and basic HTML and CSS I want to create a work day scheduler which stores th4e data for each day.  
+By using jQuery, moment.JS and basic HTML and CSS I want to create a work day scheduler which stores the data for each day.  
 ​
 ## �� USAGE
 ​
-[**>> Visit my portfolio website <<**](insert the link here)
+[**>> Visit my portfolio website <<**](https://github.com/khans0)
 ​
 ### �� User story
 ​
@@ -27,65 +27,60 @@ As a user with a busy schedule
 I WANT to add important events to a daily planner
 SO THAT I can manage my time effectively
 ```
-​
-[comment]: <> (feel free to complete the list)
-​
-```
-GIVEN the ...
-​
-WHEN
-THEN
-​
-WHEN
-THEN
-​
-WHEN
-THEN
+
 ​
 ```
+GIVEN workday scheduler
 ​
-[comment]: <> (feel free to complete the list)
+WHEN I add a task for the day and click the save button
+THEN I will be able to access that same data within that same day
+​
+WHEN the page loads up it will show me the current time in a differnet colour to the other timings
+THEN I easily be able to identify the current time
+​
+
+​
+```
 ​
 ### ✅ Acceptance Criteria
 ​
 It's done when:
 ​
-- [ ]
-- [ ]
-- [ ]
-- [ ]
-- [ ] [comment]: <> (feel free to complete the list)
+- [ ]Display the current day at the top of the calender when a user opens the planner.
+- [ ]Present timeblocks for standard business hours when the user scrolls down.
+- [ ]Color-code each timeblock based on past, present, and future when the timeblock is viewed
+- [ ]Allow a user to enter an event when they click a timeblock
+- [ ]Save the event in local storage when the save button is clicked in that timeblock.
+- [ ]Persist events between refreshes of a page
 ​
 ## �� MOCK-UP
 ​
-[comment]: <> (e.g The following image shows the web application's requirements in terms of appearance and functionality:)
-​
-[comment]: <> ( to insert an image, write: ![alt text](./path/to-the-img.png))
-​
-[comment]: <> (if website is responsive insert images for different viewports or add > **Note**: This layout is designed for desktop viewing.)
+The following image shows the web application's requirements in terms of appearance and functionality:
+
+![A user clicks on slots to add text and then clicks save](./images/workday.gif)
 ​
 ## �� TECHNOLOGY USED
 ​
 - HTML
 - CSS
-  [comment]: <> (feel free to complete the list)
+- Javascript (moment.js and jQuery)
 ​
 ### �� What I've learnt
 ​
-[comment]: <> (e.g. CSS variables provides more readability to the code etc...)
+I have understood how to bring up data that is saved in local storage. As well as understanding how to moment.js effectively. 
 ​
 ### ➕ Suggestions for improvement
 ​
-[comment]: <> ( e.g. create a dark mode version of the website)
+Make the project more aesthtically appealing, where users can customise colours and add slot into the day to group certain activities
 ​
 ## �� INSTALLATION
 ​
-[comment]: <> (No installation needed OR Provide step-by-step description of how to get the development environment running.)
+N/A
 ​
 ## �� CREDITS
 ​
-[comment]: <> (List your collaborators, if any, with links to their GitHub profiles. // If you used any third-party assets that require attribution, list the creators with links to their primary web presence in this section. // If you followed tutorials, include links to those here as well.)
+N/A
 ​
 ## �� LICENSE
 ​
-[comment]: <> (e.g. This repository is licensed under the MIT license.)
+N/A

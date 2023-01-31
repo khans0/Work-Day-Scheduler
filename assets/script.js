@@ -1,51 +1,46 @@
-var liveTime = $('#currentDay');
+$(document).ready(function () {
+  // Display the current day at the top of the calendar
+  $("#currentDay").text(moment().format("dddd, MMMM Do YYYY, h:mm:ss a"));
 
-//displaying the time and day
-function displayTime(){
-    var timeNow = moment().format('DD MMM YYYY [at] hh:mm:ss a');
-    liveTime.text(timeNow);
-}
+  // Create timeblocks for standard business hours (9am - 5pm)
+  for (var i = 9; i <= 17; i++) {
+    var hour = moment().hour(i).minute(0);
+    var timeblock = $(
+      "<div class='row time-block'>" +
+        "<div class='col-sm-2 hour'>" +
+        hour.format("hA") +
+        "</div>" +
+        "<textarea class='col-sm-8 description'></textarea>" +
+        "<button class='col-sm-2 saveBtn'>" +
+        "<i class='far fa-save'></i>" +
+        "</button>" +
+        "</div>"
+    );
 
-setInterval (displayTime, 1000);
-
-//time blocks
-var workHours = [9, 10 ,11, 12, 13, 14, 15, 16, 17];
-
-function blockTime(){
-    for (var i=0; i < workHours.length; i++){
-        
-     //creating each blocks
-        var blockEL = $("<div>");
-        blockEL.addClass("row time-block");
-        
-        //create first column for the time 
-        var hourlyTimeEL = $("<div>");
-        hourlyTimeEL.addClass("col-1 hour");
-        hourlyTimeEL.text(moment().hour(workHours[i]).format("hA"));
-        blockEL.append(hourlyTimeEL);
-
-        //create second column for the text area
-        var textInputColEL = $("<div>");
-        textInputColEL.addClass("col-10");
-        var inputEL = $("<input>");
-        textInputColEL.append(inputEL);
-
-        //changing the colour of the times in the blocks
-        if (moment().hour() > workHours[i]){
-            textInputColEL.addClass("past");
-        }else if (moment().hour() < workHours[i] ){
-            textInputColEL.addClass("future");
-        }else if (moment().hour()=== workHours[i]){
-            textInputColEL.addClass("present");
-        }
-
-        blockEL.append(textInputColEL);
-        $("#time-block-container").append(blockEL);
-        
-
-        
+    // Color code each timeblock based on past, present, and future
+    if (hour.isBefore(moment(), "hour")) {
+      timeblock.find("textarea").addClass("past");
+    } else if (hour.isSame(moment(), "hour")) {
+      timeblock.find("textarea").addClass("present");
+    } else {
+      timeblock.find("textarea").addClass("future");
     }
-}
 
+    // Add the timeblock to the container
+    $(".container").append(timeblock);
+  }
 
-blockTime();
+  // Save the event to local storage when the save button is clicked
+  $(".saveBtn").click(function () {
+    var hour = $(this).parent().find(".hour").text();
+    var description = $(this).parent().find(".description").val();
+    localStorage.setItem(hour, description);
+  });
+
+  // Load the events from local storage and display them
+  $(".time-block").each(function () {
+    var hour = $(this).find(".hour").text();
+    var description = localStorage.getItem(hour);
+    $(this).find(".description").val(description);
+  });
+});
